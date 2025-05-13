@@ -165,7 +165,7 @@ const ReceiptForm = ({getData}) => {
 
   const handleTaxItemDelete = (indexToDelete) => {
     const updatedItems = taxes.filter((_, index) => index !== indexToDelete);
-    setItems(updatedItems);
+    setTaxes(updatedItems);
   };
 
   const handleDeleteItem = (indexToDelete) => {

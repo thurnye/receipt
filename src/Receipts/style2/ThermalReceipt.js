@@ -2,6 +2,16 @@ import React from 'react';
 import './ThermalReceipt.css';
 
 const ThermalReceipt = ({data}) => {
+
+  const formatTime = (time24) => {
+    const [hour, minute] = time24.split(':');
+    const h = parseInt(hour, 10);
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const h12 = h % 12 || 12;
+    return `${h12}:${minute}${ampm}`;
+  };
+
+  
   return (
     <div className="thermal-receipt">
       <div style={{
@@ -20,7 +30,7 @@ const ThermalReceipt = ({data}) => {
       </div>
 
       <p>Batch #: {data.batchNo}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RRN: {data.rrn}</p>
-      <p>{data.date}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{data.time}</p>
+      <p>{data.date}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatTime(data.time)}</p>
       <p>Invoice #: {data.invoice}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REF #: {data.refNo}</p>
       <p>APPR CODE: {data.apprCode}</p>
       <p>{data.paymentType}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Proximity</p>

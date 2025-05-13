@@ -3,7 +3,14 @@ import './StandardReceipt.css';
 import { data } from '../../Data/data.js';
 
 const StandardReceipt = ({data}) => {
-  console.log(data)
+  const formatTime = (time24) => {
+    const [hour, minute] = time24.split(':');
+    const h = parseInt(hour, 10);
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const h12 = h % 12 || 12;
+    return `${h12}:${minute}${ampm}`;
+  };
+
   return (
     data ? (
     <div className='receipt-container'>
@@ -18,7 +25,7 @@ const StandardReceipt = ({data}) => {
         Table: {data.table} &nbsp; | &nbsp; Server: {data.serverName}
       </p>
       <p>
-        Date: {data.date} &nbsp; | &nbsp; {data.time}
+        Date: {data.date} &nbsp; | &nbsp; {formatTime(data.time)}
       </p>
       <hr />
       <div className='items'>
