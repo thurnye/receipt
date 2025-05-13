@@ -92,6 +92,7 @@ const ReceiptForm = ({getData}) => {
 
   const handleRestaurantChange = (e) => {
     setRestaurantData({ ...restaurantData, [e.target.name]: e.target.value });
+    getData({ ...restaurantData, [e.target.name]: e.target.value })
   };
 
   const handleItemChange = (index, field, value) => {
