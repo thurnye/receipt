@@ -92,7 +92,7 @@ const ReceiptForm = ({getData}) => {
 
   const handleRestaurantChange = (e) => {
     setRestaurantData({ ...restaurantData, [e.target.name]: e.target.value });
-    getData({ ...restaurantData, [e.target.name]: e.target.value })
+    // getData({ ...restaurantData, [e.target.name]: e.target.value })
   };
 
   const handleItemChange = (index, field, value) => {
@@ -108,9 +108,10 @@ const ReceiptForm = ({getData}) => {
   useEffect(() => {
     const parsedItems = items.map(item => ({
       ...item,
-      price: item.price|| 0,
+      price: parseFloat(item.price) || 0,
       quantity: parseInt(item.quantity) || 0
     }));
+  
   
     const subtotal = parsedItems.reduce((sum, item) => sum + item.price, 0);
   
@@ -118,6 +119,7 @@ const ReceiptForm = ({getData}) => {
       const percent = tax.percent || 0;
       return sum + ((percent / 100) * subtotal);
     }, 0);
+
   
     const total = subtotal + totalTaxAmount;
   
@@ -132,17 +134,17 @@ const ReceiptForm = ({getData}) => {
         return { ...tax, total };
       })
     }));
-    getData({
-      ...restaurantData,
-      items: parsedItems,
-      subtotal: subtotal.toFixed(2),
-      total: total.toFixed(2),
-      taxes: taxes.map(tax => {
-        const percent = tax.percent || 0;
-        const total = ((percent / 100) * subtotal).toFixed(2);
-        return { ...tax, total };
-      } )
-    })
+    // getData({
+    //   ...restaurantData,
+    //   items: parsedItems,
+    //   subtotal: subtotal,
+    //   total: total.toFixed(2),
+    //   taxes: taxes.map(tax => {
+    //     const percent = tax.percent || 0;
+    //     const total = ((percent / 100) * subtotal).toFixed(2);
+    //     return { ...tax, total };
+    //   } )
+    // })
   }, [items, taxes]);
   
 
@@ -173,7 +175,9 @@ const ReceiptForm = ({getData}) => {
     setItems(updatedItems);
   };
   
-  
+  useEffect(() => {
+    getData(restaurantData)
+  },[restaurantData])
   
   
 
