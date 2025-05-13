@@ -1,23 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import StandardReceipt from './Receipts/style1/StandardReceipt';
+import ThermalReceipt from './Receipts/style2/ThermalReceipt';
+import ReceiptForm from './Data/ReceiptForm';
+import Receipts from './Receipts/receipts';
+import { useState } from 'react';
 
 function App() {
+   const [data, setData] = useState();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      
+      <div className="grid-container">
+      <div className="grid-item"><ReceiptForm getData={setData}/></div>
+      <div className="grid-item"><Receipts data={data} /></div>
+    </div>
     </div>
   );
 }

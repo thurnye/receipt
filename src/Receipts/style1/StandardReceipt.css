@@ -1,0 +1,70 @@
+.receipt-container {
+    width: 320px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    background: #fefefe;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    line-height: 1.5;
+  
+    /* Rough texture effect */
+    background-image: radial-gradient(circle, #f8f8f8 1px, transparent 1px),
+                      radial-gradient(circle, #f8f8f8 1px, transparent 1px);
+    background-position: 0 0, 5px 5px;
+    background-size: 10px 10px;
+    filter: grayscale(0.1);
+  }
+  
+  .receipt-container h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-shadow: 0.3px 0.3px 0.5px #999;
+  }
+  
+  .receipt-container p,
+  .receipt-container div {
+    font-size: 14px;
+    margin: 2px 0;
+    text-shadow: 0.2px 0.2px 0.4px rgba(0,0,0,0.2);
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px dashed #aaa;
+    margin: 10px 0;
+    opacity: 0.6;
+  }
+  
+  .items {
+    margin-top: 10px;
+  }
+  
+  .item {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  
+  .item-name {
+    flex: 1;
+    text-align: left;
+    padding-left: 5px;
+  }
+  
+  .summary div,
+  .total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .total {
+    font-size: 16px;
+    margin-top: 10px;
+    border-top: 1px dashed #aaa;
+    padding-top: 5px;
+  }
+  

@@ -1,0 +1,55 @@
+.thermal-receipt {
+    width: 350px;
+    margin: 20px auto;
+    padding: 20px 15px;
+    font-family: monospace;
+    font-size: 14px;
+    background: #fefefe;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    white-space: pre-wrap;
+    line-height: 1.4;
+  
+    /* Optional curved edges */
+    border-radius: 5px;
+  
+    /* Optional grainy look */
+    background-image: radial-gradient(circle, #f4f4f4 1px, transparent 1px),
+                      radial-gradient(circle, #f4f4f4 1px, transparent 1px);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+  }
+  
+  .thermal-receipt h4 {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  
+  .thermal-receipt p {
+    margin: 3px 0;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .center {
+    text-align: center;
+    margin: 8px 0;
+  }
+  
+  .approved {
+    font-size: 16px;
+  }
+  
+  .small {
+    font-size: 12px;
+  }
+  
+  .amount-line {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  

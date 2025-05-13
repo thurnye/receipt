@@ -1,0 +1,28 @@
+export const receiptData = {
+    restaurant: "LOMA STEAKHOUSE",
+    address: "280 King Street West, Toronto, ON M5V-1A2",
+    phone: "(416) 555-9182",
+    businessNo: "HST5287694201",
+    table: 12,
+    server: "Marcus R.",
+    date: "April 21, 2024",
+    time: "8:47 PM",
+    items: [
+      { qty: 4, name: "Dry-aged Ribeye 16oz", price: 320.00 },
+      { qty: 2, name: "Lobster Thermidor", price: 285.00 },
+      { qty: 2, name: "Truffle Mashed Potatoes", price: 48.00 },
+      { qty: 2, name: "Grilled Asparagus Spears", price: 42.00 },
+      { qty: 1, name: "Caviar Tasting Plate", price: 120.00 },
+      { qty: 1, name: "Baked Brie & Fig Jam", price: 26.00 },
+      { qty: 3, name: "Old Fashioned Cocktails", price: 57.00 },
+      { qty: 2, name: "House Red Wine (Glass)", price: 42.00 },
+      { qty: 1, name: "Sparkling Mineral Water", price: 10.00 },
+      { qty: 1, name: "Triple Chocolate Lava Cake", price: 18.00 },
+      { qty: 1, name: "Seasonal Fruit Platter", price: 22.00 },
+    ],
+    subtotal: 990.00,
+    hst: 128.70,
+    service: 148.50,
+    total: 1167.20,
+    paymentMethod: "VISA – XXXXXXXXXXXXXXXX3710"
+  };
