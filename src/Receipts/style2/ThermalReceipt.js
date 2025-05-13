@@ -4,11 +4,20 @@ import './ThermalReceipt.css';
 const ThermalReceipt = ({data}) => {
   return (
     <div className="thermal-receipt">
+      <div style={{
+        display:'flex',
+        justifyContent:'center',
+        flexDirection:'column',
+        alignContent:'center',
+        width:'100%'
+      }}>
       <h4>{data.restaurant}</h4>
       <p>{data.street}&nbsp;&nbsp;&nbsp;&nbsp;{data.postalCode}</p>
-      <p>{data.city}, {data.state}</p>
+      <p >{data.city}, {data.state}</p>
 
       <div className="center bold">SALE</div>
+
+      </div>
 
       <p>Batch #: {data.batchNo}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RRN: {data.rrn}</p>
       <p>{data.date}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{data.time}</p>
