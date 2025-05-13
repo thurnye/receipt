@@ -2,7 +2,7 @@ import React from 'react';
 import './StandardReceipt.css';
 import { data } from '../../Data/data.js';
 
-const StandardReceipt = ({data}) => {
+const StandardReceipt = ({ data }) => {
   const formatTime = (time24) => {
     const [hour, minute] = time24.split(':');
     const h = parseInt(hour, 10);
@@ -11,22 +11,30 @@ const StandardReceipt = ({data}) => {
     return `${h12}:${minute}${ampm}`;
   };
 
-  return (
-    data ? (
+  return data ? (
     <div className='receipt-container'>
-      <h2>{data.restaurant}</h2>
-      <p>{data.street}</p>
-      <p>{data.city}, {data.state}, {data.postalCode}</p>
+      <div
+        style={{
+          margin: 'auto',
+          textAlign: 'center',
+        }}
+      >
+        <h2>{data.restaurant}</h2>
+        <p>{data.street}</p>
+        <p>
+          {data.city}, {data.state}, {data.postalCode}
+        </p>
 
-      <p>Phone: {data.phone}</p>
-      <p>Business #: {data.businessNo}</p>
-      <hr />
-      <p>
-        Table: {data.table} &nbsp; | &nbsp; Server: {data.serverName}
-      </p>
-      <p>
-        Date: {data.date} &nbsp; | &nbsp; {formatTime(data.time)}
-      </p>
+        <p>Phone: {data.phone}</p>
+        <p>Business #: {data.businessNo}</p>
+        <hr />
+        <p>
+          Table: {data.table} &nbsp; | &nbsp; Server: {data.serverName}
+        </p>
+        <p>
+          Date: {data.date} &nbsp; | &nbsp; {formatTime(data.time)}
+        </p>
+      </div>
       <hr />
       <div className='items'>
         {data.items.map((item, index) => (
@@ -46,7 +54,9 @@ const StandardReceipt = ({data}) => {
 
         {data.taxes.map((tax, index) => (
           <div key={index}>
-            <span>{tax.name}{' '} ({tax.percent}%)</span>
+            <span>
+              {tax.name} ({tax.percent}%)
+            </span>
             <span>${tax.total}</span>
           </div>
         ))}
@@ -56,12 +66,22 @@ const StandardReceipt = ({data}) => {
         <span>${data.total}</span>
       </div>
       <hr />
-      <p>{data.paymentType}-{data.paymentMethod}</p>
-      <p>{data.footer1}</p>
-      <p>{data.footer2}</p>
-      <p>{data.footer3}</p>
+      <div
+        style={{
+          margin: 'auto',
+          textAlign: 'center',
+        }}
+      >
+        <p>
+          {data.paymentType}-{data.paymentMethod}
+        </p>
+        <p>{data.footer1}</p>
+        <p>{data.footer2}</p>
+        <p>{data.footer3}</p>
+      </div>
     </div>
-    ) : 'loading'
+  ) : (
+    'loading'
   );
 };
 
