@@ -3,89 +3,26 @@ import './ReceiptForm.css';
 import StandardReceipt from '../Receipts/style1/StandardReceipt';   
 import ThermalReceipt from '../Receipts/style2/ThermalReceipt';
 
-const ReceiptForm = ({getData}) => {
-  const [items, setItems] = useState([
-    { name: 'Dry-aged Ribeye 16oz', price: 320.00, quantity: 4 },
-    { name: 'Lobster Thermidor', price: 285.00, quantity: 2 },
-    { name: 'Truffle Mashed Potatoes', price: 48.00, quantity: 2 },
-    { name: 'Grilled Asparagus Spears', price: 42.00, quantity: 2 },
-    { name: 'Caviar Tasting Plate', price: 120.00, quantity: 1 },
-    { name: 'Baked Brie & Fig Jam', price: 26.00, quantity: 1 },
-    { name: 'Old Fashioned Cocktails', price: 57.00, quantity: 3 },
-    { name: 'House Red Wine (Glass)', price: 42.00, quantity: 2 },
-    { name: 'Sparkling Mineral Water', price: 10.00, quantity: 1 },
-    { name: 'Triple Chocolate Lava Cake', price: 18.00, quantity: 1 },
-    { name: 'Seasonal Fruit Platter', price: 22.00, quantity: 1 }
-  ]);
+const ReceiptForm = ({getData, data}) => {
+  const [items, setItems] = useState([]);
   const [taxes, setTaxes] = useState([
-    { name: 'HST', percent: '13', total: '' },
-    { name: 'Service Charge', percent: '15', total: '' }
+    { name: '', percent: '', total: '' },
+    // { name: 'Service Charge', percent: '15', total: '' }
   ]);
   
 
-  const [restaurantData, setRestaurantData] = useState({
-    // Business Info
-    restaurant: 'LOMA STEAKHOUSE',
-    street: '280 King Street West',            // from input
-    city: 'Toronto',
-    state: 'ON',
-    postalCode: 'M5V-1A2',
-    phone: '(416) 555-9182',
-    businessNo: 'HST5287694201',
-    batchNo: '357',
-    rrn: '0013282360',
-    invoice: '229',      
-    refNo: '00000232',
-    apprCode: '05100Z',
-    aid: 'A0000000041010',
-    // Receipt Metadata
-    table: 12,
-    serverName: 'Marcus R.',
-    date: '2024-04-21',
-    time: '20:47',
+  const [restaurantData, setRestaurantData] = useState(data);
+
+  useEffect(() => {
+    const savedData = localStorage.getItem('receiptData');
+    if (savedData) {
+      const parsed = JSON.parse(savedData);
+      setRestaurantData(parsed);
+      setItems(parsed.items || []);
+      setTaxes(parsed.taxes || []);
+    }
+  }, []);
   
-    // Items (auto-updated from item input list)
-    items: [
-      { name: 'Dry-aged Ribeye 16oz', price: 320.00, quantity: 4 },
-      { name: 'Lobster Thermidor', price: 285.00, quantity: 2 },
-      { name: 'Truffle Mashed Potatoes', price: 48.00, quantity: 2 },
-      { name: 'Grilled Asparagus Spears', price: 42.00, quantity: 2 },
-      { name: 'Caviar Tasting Plate', price: 120.00, quantity: 1 },
-      { name: 'Baked Brie & Fig Jam', price: 26.00, quantity: 1 },
-      { name: 'Old Fashioned Cocktails', price: 57.00, quantity: 3 },
-      { name: 'House Red Wine (Glass)', price: 42.00, quantity: 2 },
-      { name: 'Sparkling Mineral Water', price: 10.00, quantity: 1 },
-      { name: 'Triple Chocolate Lava Cake', price: 18.00, quantity: 1 },
-      { name: 'Seasonal Fruit Platter', price: 22.00, quantity: 1 }
-    ],
-  
-    // Taxes (auto-updated from tax input list)
-    taxes: [
-      {
-        name: 'HST',
-        percent: 13,
-        total: 21.45
-      },
-      {
-        name: 'Service-Charge',
-        percent: 15,
-        total: 24.75
-      }
-    ],
-  
-    // Totals (calculated automatically)
-    subtotal: 165.00,
-    total: 211.20,
-  
-    // Payment Info
-    paymentType: 'VISA',
-    paymentMethod: 'XXXXXXXXXXXXXXXX3710',
-  
-    // Footer (custom message lines)
-    footer1: 'Thank you for dining with us!',
-    footer2: 'Follow us on Instagram: LomaSteakT',
-    footer3: ''
-  });
   
 
  
@@ -177,6 +114,7 @@ const ReceiptForm = ({getData}) => {
   
   useEffect(() => {
     getData(restaurantData)
+    localStorage.setItem('receiptData', JSON.stringify(restaurantData)); 
   },[restaurantData])
   
   
