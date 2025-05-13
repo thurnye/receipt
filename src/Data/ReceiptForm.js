@@ -378,8 +378,8 @@ const ReceiptForm = ({getData, data}) => {
 
             </div>
             <div className='form-section'>
-              <label>Payment:</label>
-            <input name="paymentMethod" placeholder="Payment Method" value={restaurantData.paymentMethod} onChange={handleRestaurantChange} />
+              <label>cardLast4Digits:</label>
+            <input name="cardLast4Digits" placeholder="1234" value={restaurantData.cardLast4Digits} onChange={handleRestaurantChange} />
 
             </div>
 

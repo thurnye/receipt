@@ -73,7 +73,7 @@ const StandardReceipt = ({ data }) => {
         }}
       >
         <p>
-          {data.paymentType}-{data.paymentMethod}
+          {data.paymentType}-XXXXXXXXXXXXXXXX{data.cardLast4Digits}
         </p>
         <p>{data.footer1}</p>
         <p>{data.footer2}</p>
