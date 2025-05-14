@@ -44,7 +44,7 @@ function App() {
     subtotal: 0,
     total: 0,
     paymentType: 'VISA',
-    cardLast4Digits: '3710',
+    cardLast4Digits: 'XXXXXXXXXXXXXXXX3710',
     footer1: 'Thank you for dining with us!',
     footer2: 'Follow us on Instagram: LomaSteakT',
     footer3: ''
