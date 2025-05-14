@@ -34,7 +34,7 @@ const ThermalReceipt = ({data}) => {
       <p>Invoice #: {data.invoice}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REF #: {data.refNo}</p>
       <p>APPR CODE: {data.apprCode}</p>
       <p>{data.paymentType}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Proximity</p>
-      <p>XXXXXXXXXXXXXXXX{data.cardLast4Digits}</p>
+      <p>{data.cardLast4Digits}</p>
       <p>AID: {data.aid}</p>
 
       <hr />
