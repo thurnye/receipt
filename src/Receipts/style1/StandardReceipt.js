@@ -1,6 +1,5 @@
 import React from 'react';
 import './StandardReceipt.css';
-import { data } from '../../Data/data.js';
 
 const StandardReceipt = ({ data }) => {
   const formatTime = (time24) => {
@@ -26,7 +25,7 @@ const StandardReceipt = ({ data }) => {
         </p>
 
         <p>Phone: {data.phone}</p>
-        <p>Business #: {data.businessNo}</p>
+        <p>Business #: HST{data.businessNo}</p>
         <hr />
         <p>
           Table: {data.table} &nbsp; | &nbsp; Server: {data.serverName}

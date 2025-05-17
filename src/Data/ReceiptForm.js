@@ -168,6 +168,12 @@ const ReceiptForm = ({getData, data}) => {
             <input name="table" placeholder="Table" value={restaurantData.table} onChange={handleRestaurantChange} />
 
             </div>
+            <div className='form-section'>
+
+              <label>Guest No:</label>
+            <input name="guest" placeholder="4" value={restaurantData.guest} onChange={handleRestaurantChange} />
+
+            </div>
 
             <div className='form-section'>
               <label>Server Name:</label>
@@ -214,6 +220,17 @@ const ReceiptForm = ({getData, data}) => {
               <h5>ITEMS</h5>
               {items.map((item, index) => (
                 <div key={index} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                  
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <label>Quantity</label>
+                    <input
+                      type="number"
+                      value={item.quantity}
+                      onChange={e => handleItemChange(index, 'quantity', e.target.value)}
+                      style={{ width: '100px' }}
+                    />
+                  </div>
+
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <label>Item Name</label>
                     <input
@@ -233,15 +250,7 @@ const ReceiptForm = ({getData, data}) => {
                     />
                   </div>
 
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <label>Quantity</label>
-                    <input
-                      type="number"
-                      value={item.quantity}
-                      onChange={e => handleItemChange(index, 'quantity', e.target.value)}
-                      style={{ width: '100px' }}
-                    />
-                  </div>
+                  
                   <button
                     onClick={() => handleDeleteItem(index)}
                     style={{
@@ -369,6 +378,10 @@ const ReceiptForm = ({getData, data}) => {
             <div className='form-section'>
               <label>Footer3</label>
             <input name="footer3" placeholder="Thank you for dining with us!" value={restaurantData.footer3} onChange={handleRestaurantChange} />
+            </div>
+            <div className='form-section'>
+              <label>Website</label>
+            <input name="website" placeholder="example.com" value={restaurantData.website} onChange={handleRestaurantChange} />
             </div>
 
            

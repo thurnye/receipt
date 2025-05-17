@@ -1,0 +1,47 @@
+.lab-receipt {
+    width: 280px;
+    font-family: monospace;
+    font-size: 13px;
+    background-color: white;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid #ccc;
+    line-height: 1.4;
+  }
+  
+  .center {
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+  
+  .items .item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+  }
+  
+  .item .desc {
+    flex-grow: 1;
+    margin: 0 6px;
+  }
+  
+  /* .summary, .total-line {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin: 4px 0;
+  }
+   */
+  hr {
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin: 6px 0;
+  }
+  

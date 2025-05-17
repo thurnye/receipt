@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ThermalReceipt from './style2/ThermalReceipt';
 import StandardReceipt from './style1/StandardReceipt';
+import Sample3 from './style3/Sample3';
 import { Link } from 'react-router';
 
 const Receipts = ({ data, setType }) => {
@@ -14,6 +15,10 @@ const Receipts = ({ data, setType }) => {
     thermal: {
       component: <ThermalReceipt data={data} />,
       name: 'Thermal',
+    },
+    sample3: {
+      component: <Sample3 data={data} />,
+      name: 'Sample3',
     },
   };
 
