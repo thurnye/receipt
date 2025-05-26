@@ -1,0 +1,45 @@
+.yonge-receipt {
+    width: 180px;
+    font-family: monospace;
+    font-size: 12px;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    line-height: 1.4;
+  }
+  
+  .center {
+    text-align: center;
+    margin: 4px 0;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .small {
+    font-size: 11px;
+  }
+  
+  .details p {
+    margin: 2px 0;
+    text-align: start;
+  }
+  
+  .amounts {
+    margin: 10px 0;
+  }
+  
+  .amounts div {
+    display: flex;
+    justify-content: space-between;
+    margin: 2px 0;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin: 10px 0;
+  }
+  
