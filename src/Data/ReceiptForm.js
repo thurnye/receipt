@@ -9,6 +9,9 @@ const ReceiptForm = ({getData, data}) => {
     { name: '', percent: '', total: '' },
     // { name: 'Service Charge', percent: '15', total: '' }
   ]);
+  const [footers, setFooters] = useState([
+    { text: '' }
+  ]);
   
 
   const [restaurantData, setRestaurantData] = useState(data);
@@ -20,6 +23,7 @@ const ReceiptForm = ({getData, data}) => {
       setRestaurantData(parsed);
       setItems(parsed.items || []);
       setTaxes(parsed.taxes || []);
+      setFooters(parsed.footers || [{ text: '' }]);
     }
   }, []);
   
@@ -69,7 +73,8 @@ const ReceiptForm = ({getData, data}) => {
         const percent = tax.percent || 0;
         const total = ((percent / 100) * subtotal).toFixed(2);
         return { ...tax, total };
-      })
+      }),
+      footers: footers
     }));
     // getData({
     //   ...restaurantData,
@@ -82,7 +87,7 @@ const ReceiptForm = ({getData, data}) => {
     //     return { ...tax, total };
     //   } )
     // })
-  }, [items, taxes]);
+  }, [items, taxes, footers]);
   
 
   const handleAddTaxRow = () => {
@@ -111,6 +116,21 @@ const ReceiptForm = ({getData, data}) => {
     const updatedItems = items.filter((_, index) => index !== indexToDelete);
     setItems(updatedItems);
   };
+
+  const handleAddFooterRow = () => {
+    setFooters([...footers, { text: '' }]);
+  };
+
+  const handleFooterChange = (index, value) => {
+    const updatedFooters = [...footers];
+    updatedFooters[index].text = value;
+    setFooters(updatedFooters);
+  };
+
+  const handleFooterDelete = (indexToDelete) => {
+    const updatedFooters = footers.filter((_, index) => index !== indexToDelete);
+    setFooters(updatedFooters);
+  };
   
   useEffect(() => {
     getData(restaurantData)
@@ -130,6 +150,23 @@ const ReceiptForm = ({getData, data}) => {
             <div className='form-section'>
               <label>Restaurant Name:</label>
             <input name="restaurant" placeholder="Restaurant Name" value={restaurantData.restaurant} onChange={handleRestaurantChange} />
+            
+
+            </div>
+            <div className='form-section'>
+              <label>Sub Name for sample 6:</label>
+            <input name="subName" 
+            placeholder="Restaurant Sub Name" 
+            value={restaurantData.subName} 
+            onChange={handleRestaurantChange} />
+
+            </div>
+            <div className='form-section'>
+              <label>Establish</label>
+            <input name="est" 
+            placeholder="2012" 
+            value={restaurantData.est} 
+            onChange={handleRestaurantChange} />
 
             </div>
             <div className='form-section'>
@@ -367,17 +404,50 @@ const ReceiptForm = ({getData, data}) => {
 
 
 
-            <div className='form-section'>
-              <label>Footer1</label>
-            <input name="footer1" placeholder="Thank you for dining with us!" value={restaurantData.footer1} onChange={handleRestaurantChange} />
-            </div>
-            <div className='form-section'>
-              <label>Footer2</label>
-            <input name="footer2" placeholder="Thank you for dining with us!" value={restaurantData.footer2} onChange={handleRestaurantChange} />
-            </div>
-            <div className='form-section'>
-              <label>Footer3</label>
-            <input name="footer3" placeholder="Thank you for dining with us!" value={restaurantData.footer3} onChange={handleRestaurantChange} />
+            <div style={{margin: '20px 0'}}>
+              <h5>FOOTER MESSAGES</h5>
+              {footers.map((footer, index) => (
+                <div key={index} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <label>Footer Text</label>
+                    <input
+                      type="text"
+                      value={footer.text}
+                      placeholder="Thank you for dining with us!"
+                      onChange={e => handleFooterChange(index, e.target.value)}
+                    />
+                  </div>
+
+                  <button
+                    onClick={() => handleFooterDelete(index)}
+                    style={{
+                      color: 'white',
+                      padding: '6px 10px',
+                      border: 'none',
+                      borderRadius: '4px',
+                      height: '38px',
+                      alignSelf: 'center',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    🗑
+                  </button>
+                </div>
+              ))}
+              <button
+                onClick={handleAddFooterRow}
+                style={{
+                  marginTop: 10,
+                  backgroundColor: '#4CAF50',
+                  color: 'white',
+                  padding: '10px 20px',
+                  border: 'none',
+                  borderRadius: 5,
+                  cursor: 'pointer'
+                }}
+              >
+                Add Footer
+              </button>
             </div>
             <div className='form-section'>
               <label>Website</label>

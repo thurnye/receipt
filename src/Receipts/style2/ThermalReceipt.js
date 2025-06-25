@@ -68,8 +68,9 @@ const ThermalReceipt = ({data}) => {
 
       <div className="center bold approved">001 APPROVED</div>
 
-      <p className="center small">{data.footer1}</p>
-      <p className="center small">{data.footer2}</p>
+      {data.footers && data.footers.map((footer, index) => (
+        <p key={index} className="center small">{footer.text}</p>
+      ))}
       <div className="center bold">CUSTOMER COPY</div>
     </div>
   );

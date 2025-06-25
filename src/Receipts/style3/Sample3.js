@@ -136,9 +136,9 @@ const Sample3 = ({ data }) => {
       }}>
 
       </div>
-      <p className='center small'>{data.footer1}</p>
-      <p className='center small'>{data.footer2}</p>
-      <p className='center small'>{data.footer3}</p>
+      {data.footers && data.footers.map((footer, index) => (
+        <p key={index} className='center small'>{footer.text}</p>
+      ))}
       <p className='center small'>HST# {data.businessNo}</p>
       <p className='center small'style={{
         marginTop: '20px',

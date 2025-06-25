@@ -4,6 +4,8 @@ import StandardReceipt from './style1/StandardReceipt';
 import Sample3 from './style3/Sample3';
 import { Link } from 'react-router';
 import Sample4 from './style4/Sample4';
+import Sample6 from './style6/Sample6';
+import Sample5 from './style5/Sample5';
 
 const Receipts = ({ data, setType }) => {
   const [receiptName, setReceiptName] = useState('Standard');
@@ -24,6 +26,14 @@ const Receipts = ({ data, setType }) => {
     sample4: {
       component: <Sample4 data={data} />,
       name: 'Sample4',
+    },
+    sample5: {
+      component: <Sample5 data={data} />,
+      name: 'Sample5',
+    },
+    sample6: {
+      component: <Sample6 data={data} />,
+      name: 'Sample6',
     },
   };
 

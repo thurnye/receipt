@@ -1,33 +1,43 @@
 import React from 'react';
 import './Sample4.css';
 
-const Sample4 = () => {
+const Sample4 = ({data}) => {
+  // Generate a random number from 1 to 999
+  const randomNumber =( end) => Math.floor(Math.random() * end) + 1;
+const formatTime = (time24) => {
+    const [hour, minute] = time24.split(':');
+    const h = parseInt(hour, 10);
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const h12 = h % 12 || 12;
+    return `${h12}:${minute}${ampm}`;
+  };
+  
   return (
     <div className="yonge-receipt">
-      <h4 className="center">The Yonge Street Warehouse</h4>
+      <h4 className="center">{data.restaurant}</h4>
       <p className="center">
-        336 Yonge Street<br />
-        Toronto ON M5B 1R8<br />
-        416-599-6788
+        {data.street}<br />
+        {data.city} {data.state} {data.postalCode}<br />
+        {data.phone}
       </p>
 
       <p className="center">** TRANSACTION RECORD **</p>
 
       <div className="details">
-        <p>Tran. #: 4792</p>
-        <p>Lookup #: 04792802211087</p>
+        <p>Tran. #: {data.ref}</p>
+        <p>Lookup #: {data.businessNo}</p>
         <p>RVC #: RESTAURANT</p>
-        <p>Table #: 141</p>
-        <p>Check #: 44921</p>
-        <p>Group #: 1</p>
-        <p>Employee #: 317</p>
-        <p>Employee: SONJA</p>
+        <p>Table #: {data.table}</p>
+        <p>Check #: {data.invoice}</p>
+        <p>Group #: {data.guest}</p>
+        <p>Employee #:{randomNumber(999)}</p>
+        <p>Employee: {data.serverName}</p>
       </div>
 
       <div className="details" style={{ marginTop: 10 }}>
         <p>Type: Purchase</p>
         <p>Acct: Visa</p>
-        <p>Card #: ************8022</p>
+        <p>Card #: {data.cardLast4Digits}</p>
       </div>
 
       <hr />
@@ -35,31 +45,35 @@ const Sample4 = () => {
       <div className="amounts">
         <div className="bold">
           <span style={{width: 200, textAlign: 'end'}}>Amount</span>
-          <span style={{width: 200, textAlign: 'end'}}>$193.96</span>
+          <span style={{width: 200, textAlign: 'end'}}>${data.subtotal}</span>
         </div>
-        <div className="bold">
-          <span style={{width: 200, textAlign: 'end'}}>Tip</span>
-          <span style={{width: 200, textAlign: 'end'}}>$16.91</span>
+        {data.taxes.map((tax, index) => (<>
+          <div className="bold">
+          <span style={{width: 200, textAlign: 'end'}}> {tax.name}:</span>
+          <span style={{width: 200, textAlign: 'end'}}>${tax.total}</span>
         </div>
+        </>
+        ))}
+       <hr />
         <div className="bold">
           <span style={{width: 200, textAlign: 'end'}}>TOTAL</span>
-          <span style={{width: 200, textAlign: 'end'}}>$210.87</span>
+          <span style={{width: 200, textAlign: 'end'}}>${data.total}</span>
           </div>
       </div>
 
       <hr />
 
       <div className="details">
-        <p>Reference #: 0016720470 H</p>
-        <p>Auth. #: 002611</p>
-        <p>WARE092519 006</p>
-        <p>06/24/2025  1:30:08 AM</p>
+        <p>Reference #: 00{randomNumber(90000000)}H</p>
+        <p>Auth. #: 00{randomNumber(10000)}</p>
+        <p>WARE0{randomNumber(10000)} 00{randomNumber(10)}</p>
+        <p>{data.date} {}</p>
         <p>Visa CREDIT</p>
-        <p>A0000000031010</p>
+        <p>A00000000{randomNumber(10000)}</p>
       </div>
 
       <p className="center bold">APPROVED - THANK YOU</p>
-      <p className="center">01-027</p>
+      <p className="center">01-0{randomNumber(100)}</p>
 
       <p className="center small">No signature required</p>
       <p className="center small">IMPORTANT—<br />Retain this copy for your records</p>

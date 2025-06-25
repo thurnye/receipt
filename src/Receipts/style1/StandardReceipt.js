@@ -74,9 +74,9 @@ const StandardReceipt = ({ data }) => {
         <p>
           {data.paymentType}-{data.cardLast4Digits}
         </p>
-        <p>{data.footer1}</p>
-        <p>{data.footer2}</p>
-        <p>{data.footer3}</p>
+        {data.footers && data.footers.map((footer, index) => (
+          <p key={index}>{footer.text}</p>
+        ))}
       </div>
     </div>
   ) : (
