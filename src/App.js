@@ -28,6 +28,7 @@ export const defaultData = {
   serverName: 'Marcus R.',
   date: '2025-05-16',
   time: '20:47',
+  payee:'John Doe',
   items: [
     { quantity: 4, name: 'Dry-aged Ribeye 16oz', price: 320.0 },
     { quantity: 2, name: 'Lobster Thermidor', price: 285.0 },

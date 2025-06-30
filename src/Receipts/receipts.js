@@ -6,9 +6,12 @@ import { Link } from 'react-router';
 import Sample4 from './style4/Sample4';
 import Sample6 from './style6/Sample6';
 import Sample5 from './style5/Sample5';
+import Sample7 from './style7/Sample7';
+import Sample8 from './style8/Sample8';
+import Sample9 from './style9/Sample9';
 
 const Receipts = ({ data, setType }) => {
-  const [receiptName, setReceiptName] = useState('Standard');
+  const [receiptName, setReceiptName] = useState('Sample7');
 
   const receipts = {
     standard: {
@@ -34,6 +37,18 @@ const Receipts = ({ data, setType }) => {
     sample6: {
       component: <Sample6 data={data} />,
       name: 'Sample6',
+    },
+    sample7: {
+      component: <Sample7 data={data} />,
+      name: 'Sample7',
+    },
+    sample8: {
+      component: <Sample8 data={data} />,
+      name: 'Sample8',
+    },
+    sample9: {
+      component: <Sample9 data={data} />,
+      name: 'Sample9',
     },
   };
 

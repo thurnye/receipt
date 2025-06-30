@@ -170,6 +170,14 @@ const ReceiptForm = ({getData, data}) => {
 
             </div>
             <div className='form-section'>
+              <label>Reserver/Payee</label>
+            <input name="payee" 
+            placeholder="name of payee" 
+            value={restaurantData.payee} 
+            onChange={handleRestaurantChange} />
+
+            </div>
+            <div className='form-section'>
               <label>Street:</label>
             <input name="street" placeholder="street" value={restaurantData.street} onChange={handleRestaurantChange} />
 

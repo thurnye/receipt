@@ -144,7 +144,9 @@ const Sample5 = ({data}) => {
 
         <hr style={styles.hr} />
 
-        <p><strong>Spaccio East:</strong> 22 Sackville St.</p>
+        
+
+        {/* <p><strong>Spaccio East:</strong> 22 Sackville St.</p>
         <p><strong>Sud Forno Queen:</strong> 716 Queen Street</p>
         <p><strong>Terroni Sterling:</strong> 128 Sterling Rd.</p>
 
@@ -154,7 +156,7 @@ const Sample5 = ({data}) => {
         <p>Spaccio East GM: <strong>Julia Korotniuk</strong></p>
 
         <p>Join our Sud Forno and Spaccio gro</p>
-        <p>café loyalty program or check your points online!</p>
+        <p>café loyalty program or check your points online!</p> */}
         <p>Visit: <a href={data.website} target="_blank" rel="noreferrer">{data.website}</a></p>
 
         <p><strong>HST# {data.rrn}</strong></p>

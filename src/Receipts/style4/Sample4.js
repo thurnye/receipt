@@ -4,13 +4,7 @@ import './Sample4.css';
 const Sample4 = ({data}) => {
   // Generate a random number from 1 to 999
   const randomNumber =( end) => Math.floor(Math.random() * end) + 1;
-const formatTime = (time24) => {
-    const [hour, minute] = time24.split(':');
-    const h = parseInt(hour, 10);
-    const ampm = h >= 12 ? 'PM' : 'AM';
-    const h12 = h % 12 || 12;
-    return `${h12}:${minute}${ampm}`;
-  };
+
   
   return (
     <div className="yonge-receipt">
