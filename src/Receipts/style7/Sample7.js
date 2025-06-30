@@ -140,13 +140,14 @@ const Sample7 = ({data}) => {
 
 const styles = {
   container: {
-    width: '350px',
+    width: '200px',
     fontFamily: 'monospace',
     padding: '1em',
     margin: '2em auto',
     border: '1px solid #ccc',
     backgroundColor: '#fff',
     color: '#000',
+    fontSize: 9
   },
   center: {
     textAlign: 'center',

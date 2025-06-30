@@ -11,7 +11,7 @@ import Sample8 from './style8/Sample8';
 import Sample9 from './style9/Sample9';
 
 const Receipts = ({ data, setType }) => {
-  const [receiptName, setReceiptName] = useState('Sample7');
+  const [receiptName, setReceiptName] = useState('Sample8');
 
   const receipts = {
     standard: {

@@ -1,46 +1,133 @@
 import React from 'react';
+import { formatTime, GenerateRandomId, randomNumber } from '../../util';
 
-const Sample8 = () => {
+const Sample8 = ({ data }) => {
   const subtotal = 21.01;
   const tip = 0.99;
-  const total = 22.00;
+  const total = 22.0;
 
   return (
     <div style={styles.container}>
-      <h3 style={styles.center}>Hana Ramen DT</h3>
-      <p style={styles.center}>1024 GERRARD ST E</p>
-      <p style={styles.center}>TORONTO, ON M4M 1Z5</p>
-      <p style={styles.center}>4162988688</p>
-      <p style={styles.center}>WWW.NONE.COM</p>
+      <h3 style={styles.center}>{data.restaurant}</h3>
+      <p style={styles.center}>{data.street}</p>
+      <p style={styles.center}>
+        {data.city} {data.state} {data.postalCode}
+      </p>
+      <p style={styles.center}> {data.phone}</p>
+      <p style={styles.center}> {data.website}</p>
 
       <div style={styles.meta}>
-        <p><strong>Cashier:</strong> Employee</p>
-        <p><strong>Transaction:</strong> 000230</p>
+        <p  style={{
+            marginBottom: '-7px',
+          }}>
+          <strong>Cashier:</strong> {data.serverName}
+        </p>
+        <p  style={{
+            marginBottom: '-7px',
+          }}>
+          <strong>Transaction:</strong> {data.refNo}
+        </p>
+        <p
+          style={{
+            marginBottom: '-7px',
+          }}
+        >
+          <strong>Table:</strong>
+          {data.table}
+        </p>
+
+        <p
+          style={{
+            marginBottom: '-7px',
+          }}
+        >
+          <strong>Guest:</strong> {data.guest}
+        </p>
       </div>
 
+      <div style={styles.items}>
+        {data.items.map((item, idx) => (
+          <div key={idx} style={styles.itemRow}>
+            <span>{item.quantity}</span>
+            <span style={{ flexGrow: 1, textAlign:'start', marginLeft: '10px'}}>{item.name}</span>
+            <span>${item.price.toFixed(2)}</span>
+          </div>
+        ))}
+        
+      </div>
+
+
       <div style={styles.totals}>
-        <div style={styles.row}><span>Total</span><span>${subtotal.toFixed(2)}</span></div>
-        <div style={styles.row}><span>Tip</span><span>${tip.toFixed(2)}</span></div>
-        <div style={styles.row}><strong>DEBIT CARD SALE</strong><strong>${total.toFixed(2)}</strong></div>
-        <p>INTERAC 8879</p>
+
+        
+        <div style={styles.row}>
+          <span>Total</span>
+          <span>${data.subtotal}</span>
+        </div>
+        
+        {data.taxes.map((tax, index) => (
+          <div key={index} style={styles.itemRow}>
+            <span>
+              {tax.name} ({tax.percent}%)
+            </span>
+            <span>${tax.total}</span>
+          </div>
+        ))}
+        <div style={styles.row}>
+          <strong>DEBIT CARD SALE</strong>
+          <strong>${data.total}</strong>
+        </div>
+        <p>{data.paymentType} {data.cardLast4Digits.toString().slice(-4)}</p>
       </div>
 
       <div style={styles.section}>
-        <p>Retain this copy for statement validation</p>
-        <p><strong>Account:</strong> Default</p>
-        <p><strong>Date:</strong> 28-Jun-2025 9:21:29 p.m.</p>
-        <p><strong>Method:</strong> CONTACTLESS</p>
-        <p><strong>Interac:</strong> ************8879</p>
-        <p><strong>Reference ID:</strong> 518000503906</p>
-        <p><strong>Auth ID:</strong> 212129</p>
-        <p><strong>MID:</strong> ******4905</p>
-        <p><strong>AID:</strong> A00000027710100100000002</p>
-        <p><strong>AuthNtwkNm:</strong> INTERAC</p>
-        <p><strong>NO CARDHOLDER VERIFICATION</strong></p>
+        <p style={{textAlign:'center'}}>Retain this copy for statement validation</p>
+        <p>
+          <strong>Account:</strong> Default
+        </p>
+        <p>
+          <strong>Date:</strong> {data.date} {formatTime(data.time)}
+        </p>
+        <p>
+          <strong>Method:</strong> CONTACTLESS
+        </p>
+        <p>
+          <strong>{data.paymentType} :</strong> {data.cardLast4Digits}
+        </p>
+        <p>
+          <strong>Reference ID:</strong> {data.rrn}
+        </p>
+        <p>
+          <strong>Auth ID:</strong> {randomNumber(1000000)}
+        </p>
+        <p>
+          <strong>MID:</strong> ******{randomNumber(10000)}
+        </p>
+        <p>
+          <strong>AID:</strong> {data.aid}
+        </p>
+        <p>
+          <strong>{GenerateRandomId(10)}:</strong> {data.paymentType}
+        </p>
+        <p>
+          <strong>NO CARDHOLDER VERIFICATION</strong>
+        </p>
       </div>
 
       <div style={styles.footer}>
-        <p>Online: <a href="https://clover.com/p/F9AEFP88EHBHR" target="_blank" rel="noreferrer">clover.com/p/F9AEFP88EHBHR</a></p>
+        {/* <p>
+          Online:{' '}
+          <a
+            href='https://clover.com/p/F9AEFP88EHBHR'
+            target='_blank'
+            rel='noreferrer'
+          >
+            clover.com/p/F9AEFP88EHBHR
+          </a>
+        </p> */}
+       {data.footers && data.footers.map((footer, index) => (
+          <p key={index}>{footer.text}</p>
+        ))}
       </div>
     </div>
   );
@@ -48,13 +135,14 @@ const Sample8 = () => {
 
 const styles = {
   container: {
-    width: '300px',
+    width: '200px',
     fontFamily: 'monospace',
     padding: '1em',
     margin: '2em auto',
     border: '1px solid #ccc',
     backgroundColor: '#fff',
     color: '#000',
+    fontSize: 9
   },
   center: {
     textAlign: 'center',
@@ -64,6 +152,21 @@ const styles = {
     fontSize: '0.85em',
     marginTop: '1em',
     marginBottom: '1em',
+    textAlign: 'left',
+  },
+    items: {
+    // borderTop: '1px dashed #000',
+    // borderBottom: '1px dashed #000',
+    padding: '0.5em 0',
+  },
+  itemRow: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: '0.25em 0',
+  },
+  totalBlock: {
+    marginTop: '1em',
+    fontSize: '1em',
   },
   totals: {
     borderTop: '1px dashed #000',
@@ -79,12 +182,13 @@ const styles = {
   section: {
     fontSize: '0.85em',
     marginTop: '1em',
+    textAlign: 'left',
   },
   footer: {
-    marginTop: '1em',
+    marginTop: '3em',
     textAlign: 'center',
     fontSize: '0.8em',
-  }
+  },
 };
 
 export default Sample8;

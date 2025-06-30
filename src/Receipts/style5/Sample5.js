@@ -120,7 +120,7 @@ const Sample5 = ({data}) => {
           </span>
           <span
             style={{
-              width: 'calc(100% - 150px)',
+              width: 'calc(100% - 100px)',
               textAlign: 'end',
             }}
           >
@@ -167,13 +167,14 @@ const Sample5 = ({data}) => {
 
 const styles = {
   container: {
-    width: '320px',
+    width: '200px',
     fontFamily: 'monospace',
     padding: '1em',
     margin: '2em auto',
     border: '1px solid #ccc',
     backgroundColor: '#fff',
-    color: '#000'
+    color: '#000',
+    fontSize: 9
   },
   title: {
     textAlign: 'center',

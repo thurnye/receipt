@@ -18,7 +18,7 @@ const Sample4 = ({data}) => {
       <p className="center">** TRANSACTION RECORD **</p>
 
       <div className="details">
-        <p>Tran. #: {data.ref}</p>
+        <p>Tran. #: {data.refNo}</p>
         <p>Lookup #: {data.businessNo}</p>
         <p>RVC #: RESTAURANT</p>
         <p>Table #: {data.table}</p>
